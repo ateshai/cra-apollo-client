@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { EXCHANGE_RATES } from "gql";
-import "./exchange-rates.scss";
+import { EXCHANGE_RATES } from "../../gql";
+// import "./exchange-rates.scss";
 
 function ExchangeRates() {
   const { loading, error, data } = useQuery(EXCHANGE_RATES);

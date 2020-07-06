@@ -1,7 +1,7 @@
 import React from "react";
 // import "styles/Home.scss";
 
-import ExchangeRates from "components/ExchangeRates";
+import ExchangeRates from "../../components/ExchangeRates";
 
 function Home() {
   return (
