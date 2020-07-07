@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "styles/style.scss";
-import Home from "pages/Home";
-import * as serviceWorker from "serviceWorker";
+import "./styles/style.scss";
+import Layout from "./routes/Layout";
+import * as serviceWorker from "./serviceWorker";
+
+import { BrowserRouter } from "react-router-dom";
 
 import ApolloClient from "apollo-boost";
 import { gql } from "apollo-boost";
@@ -27,7 +29,9 @@ client
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Home />
+      <BrowserRouter>
+        <Layout />
+      </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")

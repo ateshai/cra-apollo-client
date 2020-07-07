@@ -17,6 +17,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
     "express": "^4.17.1",
+    "extract-css-chunks-webpack-plugin": "^4.7.5",
     "graphql": "^15.2.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.14.1",
@@ -24,14 +25,27 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "rimraf": "^3.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "webpack:client": "webpack --config webpack.client.js --watch",
+    "webpack:server": "webpack --config webpack.server.js --watch",
+    "wp:server": "webpack --config webpack.server.js",
+    "wp:client": "webpack --config webpack.client.js",
+    "webpack:start": "nodemon --watch build --exec node build/server.js",
+    "dev": "npm-run-all -p webpack:*",
+    "build": "npm run clean && webpack --config webpack.client.js && webpack --config webpack.server.js",
+    "start": "node build/server.js",
+    "clean": "rimraf build",
+    "startOLD": "react-scripts start",
+    "buildOLD": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:server": "babel-node ./src/server/index.js"
+    "start:server": "nodemon --exec babel-node ./src/server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,5 +61,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chunks-2-json-webpack-plugin": "^1.0.4",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack-manifest-plugin": "^2.2.0"
   }
 }
